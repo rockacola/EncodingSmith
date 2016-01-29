@@ -15,5 +15,6 @@
     "permissions": [
         "cookies",
         "unlimitedStorage"
-    ]
+    ],
+    "manifest_version": 2
 }
