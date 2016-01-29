@@ -1,0 +1,223 @@
+/* -----------------------------------------------------------------
+[Global Stylesheet]
+
+Project:	    Doffy
+Last Modified:	2011-02-20
+
+[TABLE OF CONTENTS]
+- CSS Reset
+- Basic HTML Elements
+- Structure
+- Elements
+- CSS Tools
+    - Clear Fix
+----------------------------------------------------------------- */
+
+
+
+/* -------------------------------------------------------------- */
+/* CSS Reset
+/* REF: http://developer.yahoo.com/yui/reset/
+/* -------------------------------------------------------------- */
+
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td {   margin:0;  padding:0;  } 
+table { border-collapse:collapse; border-spacing:0; 	} 
+fieldset,img {  border:0; 	} 
+address,caption,cite,code,dfn,em,strong,th,var {   font-style:normal;   font-weight:normal; 	} 
+ol,ul { 	    list-style:none; 	} 
+caption,th { 	text-align:left; 	} 
+h1,h2,h3,h4,h5,h6 {   font-size:100%;   font-weight:normal; 	} 
+q:before,q:after { content:''; } 
+abbr,acronym { border:0; } 
+
+
+
+/* -------------------------------------------------------------- */
+/* Basic HTML Elements
+/* -------------------------------------------------------------- */
+
+body {
+}
+
+body, td, textarea, input, select {
+    font-family: "Lucida Grande", Verdana, Arial, "Bitstream Vera Sans", sans-serif;
+    font-size: 15px;
+}
+
+textarea {
+    padding: 4px;
+    color: #333;
+}
+
+strong { font-weight: bold; }
+
+em { font-style: italic; }
+
+p {
+    margin: 0;
+    padding: 6px 0px;
+}
+
+small {
+    font-size: 13px;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    margin: 0 0 0 20px;
+    padding: 2px 0 2px 0;
+}
+
+h1, h2, h3, h4, h5 {
+    margin: 0;
+    padding: 5px 0;
+}
+
+h1 { font-size: 19px; }
+
+h2 { font-size: 17px; }
+
+h3 {
+    font-size: 15px;
+    font-weight: bold;
+}
+
+a:link, a:visited{
+    text-decoration: none;
+}
+
+a:hover, a:active{
+    text-decoration: underline;
+}
+
+
+
+/* -------------------------------------------------------------- */
+/* Structure
+/* -------------------------------------------------------------- */
+
+#wrapper {
+    margin: 0 auto;
+    padding: 10px;
+    width: 640px;
+}
+
+#wrapper .header {
+    margin: 0 0 10px 0;
+    background: url(../images/favicon-24.png) no-repeat 0% 50% transparent;
+    padding: 0 0 0 28px;
+}
+
+#wrapper .content {
+    margin: 10px 0 0 0;
+    padding: 0 0 20px 0;
+    border: 2px solid #A6C9E2;
+
+    /* Ref: http://css-tricks.com/snippets/css/rounded-corners/ */
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    -khtml-border-radius: 10px;
+}
+
+#wrapper .footer {
+    margin: 10px 0 0 0;
+}
+
+#wrapper .footer p {
+    font-size: 11px;
+    color: #999;
+    text-align: center;
+}
+
+#wrapper .footer p {
+    padding: 0;
+    margin: 0;
+}
+
+
+
+/* -------------------------------------------------------------- */
+/* Elements
+/* -------------------------------------------------------------- */
+
+    /* -------------------------------------------------------------- */
+    /* Header Tab                                                     */
+
+    .header_tab {
+        margin: 5px 0 0 15px;
+        width: 594px;
+    }
+
+    .header_tab h3 {
+        color: #004F8F;
+    }
+
+    .header_tab textarea {
+        width: 100%;
+        height: 80px;
+        border: 1px solid #DFF1FF;
+    }
+
+    /* -------------------------------------------------------------- */
+    /* Generic Tab                                                    */
+
+    .tab {
+        width: 255px;
+        float: left;
+        margin: 15px 0 0 15px;
+        padding: 5px 25px 15px 15px;
+        
+        /* Ref: http://www.colorzilla.com/gradient-editor/ */
+        background: #2989D8;
+        background: -moz-linear-gradient(top, #2989D8 0%, #7DB9E8 2%, #2989D8 3%, #7DB9E8 100%);
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#2989D8), color-stop(2%,#7DB9E8), color-stop(3%,#2989D8), color-stop(100%,#7DB9E8));
+        
+        /* Ref: http://css-tricks.com/snippets/css/rounded-corners/ */
+        -moz-border-radius: 5px;
+        -webkit-border-radius: 5px;
+        border-radius: 5px;
+        -khtml-border-radius: 5px;
+    }
+
+    .tab h3 {
+        color: #06375F;
+    }
+
+    .tab textarea {
+        width: 100%;
+        height: 80px;
+        border: 1px solid #fff;
+        background-color: #DFF1FF;
+    }
+
+
+    
+/* -------------------------------------------------------------- */
+/* CSS Tools
+/* -------------------------------------------------------------- */
+
+    /* -------------------------------------------------------------- */
+    /* Clear Fix                                                      */
+
+    .cf:after {
+        content: "."; 
+        display: block; 
+        height: 0; 
+        clear: both; 
+        visibility: hidden;
+    }
+    .cf {display: inline-block;}
+    /* Hides from IE-mac \*/
+    * html .clearfix {height: 1%;}
+    .cf {display: block;}
+    /* End hide from IE-mac */
+
+
+
+/* -------------------------------------------------------------- */
+/* END OF FILE                                                    */

@@ -1,0 +1,19 @@
+{
+    "name": "Encoding Smith",
+    "description": "A handy encode/decode tool for multiple formats.",
+    "version": "1.0.1",
+    "icons": {
+        "16": "images/favicon-16.png", 
+        "24": "images/favicon-24.png", 
+        "128": "images/favicon-128.png" 
+    },
+    "app": {
+        "launch": {
+            "local_path": "index.html"
+        }
+    },
+    "permissions": [
+        "cookies",
+        "unlimitedStorage"
+    ]
+}

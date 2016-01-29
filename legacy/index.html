@@ -1,0 +1,96 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Encoding Smith, the ultimate encode/decode tool</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <link rel="icon" href="images/favicon-24.png" sizes="24x24" />
+    <link rel="icon" href="images/favicon-128.png" sizes="128x128" />
+    <script type="text/javascript" src="js/jquery-1.5.min.js"></script>
+    <script type="text/javascript" src="js/base64.js"></script>
+    <script type="text/javascript" src="js/hex.js"></script>
+    <script type="text/javascript">
+        $(function(){
+        
+            $('.plain_text textarea').keyup(function() {
+                // Plain Text
+                var text_value = $(this).val();
+                
+                // Hex
+                var hex_value = Hex.encode(text_value);
+                $('.hex_code textarea').val(hex_value);
+                
+                // Base64
+                var base64_value = Base64.encode(text_value);
+                $('.base64_code textarea').val(base64_value);
+            });
+            
+            
+            $('.hex_code textarea').keyup(function() {
+                // Hex
+                var hex_value = $(this).val();
+                
+                // Plain Text
+                var text_value = Hex.decode(hex_value);
+                $('.plain_text textarea').val(text_value);
+                
+                // Base64
+                var base64_value = Base64.encode(text_value);
+                $('.base64_code textarea').val(base64_value);
+            });
+            
+            
+            $('.base64_code textarea').keyup(function() {
+                // Base64
+                var base64_value = $(this).val();
+                
+                // Plain Text
+                var text_value = Base64.decode(base64_value);
+                $('.plain_text textarea').val(text_value);
+                
+                // Hex
+                var hex_value = Hex.encode(text_value);
+                $('.hex_code textarea').val(hex_value);
+            });
+            
+        });
+    </script>
+</head>
+
+
+<body>
+    <div id="wrapper">
+        <div class="header">
+            <h1>Encoding Smith</h1>
+        </div>
+        
+        
+        <div class="content cf">
+            
+            <div class="header_tab plain_text">
+                <h3>Plain Text</h3>
+                <textarea></textarea>
+            </div>
+            
+            <div class="tab hex_code">
+                <h3>Hexadecimal</h3>
+                <textarea></textarea>
+            </div>
+            
+            
+            <div class="tab base64_code">
+                <h3>Base64 Encode</h3>
+                <textarea></textarea>
+            </div>
+            
+        </div><!-- END .content -->
+        
+        
+        <div class="footer">
+            <p class="message">Encoded by <a href="http://travaganza.com.au/" target="_blank">Travis Lin</a>.</p>
+            <p class="copyright">Copyright &copy; 2011. All Rights Reserved.</p>
+        </div>
+        
+    </div>
+</body>
+</html>
