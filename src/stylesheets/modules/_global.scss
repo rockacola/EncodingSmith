@@ -29,6 +29,7 @@ html {
 
     > .wrapper {
         padding: 20px 40px;
+        @include clearfix();
     }
 
     @media #{$medium-up} {

@@ -38,4 +38,15 @@
         font-family: $font-courier-new-stack;
         outline: none;
     }
+
+    @media #{$medium-up} {
+        &--encode {
+            width: 48%;
+            float: left;
+
+            &:nth-of-type(2n) {
+                margin-right: 2%;
+            }
+        }
+    }
 }
