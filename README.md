@@ -25,11 +25,22 @@ TBA
 * Execute `npm install`
 * Execute `gulp` which will perform 'build' and starts 'watch' and 'server' tasks.
 
-
 ---
 
 ## Resources
-TBA
+* HTML Entity Encoder: http://www.w3schools.com/tags/ref_urlencode.asp
+* Upside Down: http://www.web2generators.com/text-related-tools/write-upside-down
+* HTPasswd Generator: http://www.web2generators.com/apache-tools/htpasswd-generator
+
+* Base64
+* URL
+* TEA
+
+* Various of character encoding/escaping: http://www.the-art-of-web.com/javascript/escape/
+
+
+## Test Cases
+* TBA
 
 ---
 

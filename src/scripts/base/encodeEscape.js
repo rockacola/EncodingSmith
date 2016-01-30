@@ -1,24 +1,26 @@
 //
-// Site / Base / Encode Base64
+// Site / Base / Encode Escape
 //
 
 'use strict';
 
 // Dependencies
-var log = require('bows')('EncodeBase64');
-var Base64 = require('js-base64').Base64;
+var log = require('bows')('EncodeEscape');
 
 
 // App Initialization
 // --------------------------------------------------
 
+
 var Encode = {
     encode: function (value) {
-        return Base64.encode(value);
+        /*global escape */
+        return escape(value);
     },
 
     decode: function (value) {
-        return Base64.decode(value);
+        /*global unescape */
+        return unescape(value);
     },
 };
 

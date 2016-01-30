@@ -14,6 +14,7 @@ var InputView = require('./input');
 
 var EncodeUri = require('../base/encodeUri');
 var EncodeBase64 = require('../base/encodeBase64');
+var EncodeEscape = require('../base/encodeEscape');
 
 
 // View
@@ -23,13 +24,7 @@ var MainView = View.extend({
 
     props: {
         frameCount: 'number',
-        formBlocks: ['array', true, function () {
-            return [];
-        }],
-
-        plainTextFormBlock: 'object',
-        base64FormBlock: 'object',
-        urlFormBlock: 'object',
+        formBlocks: ['array', true, function () { return []; }],
     },
 
     derived: {},
@@ -43,15 +38,10 @@ var MainView = View.extend({
 
         // Bootstrap
         this.formBlocks = [
-            {type: 'plain-text', view: new InputView({el: this.el.querySelector('[data-hook="input--plain-text"]')})},
-            {
-                type: 'base64',
-                view: new InputView({el: this.el.querySelector('[data-hook="input--base64"]'), algorithm: EncodeBase64})
-            },
-            {
-                type: 'url',
-                view: new InputView({el: this.el.querySelector('[data-hook="input--url"]'), algorithm: EncodeUri})
-            },
+            { type: 'plain-text',   view: new InputView({el: this.el.querySelector('[data-hook="input--plain-text"]')}) },
+            { type: 'base64',       view: new InputView({el: this.el.querySelector('[data-hook="input--base64"]'), algorithm: EncodeBase64}) },
+            { type: 'url',          view: new InputView({el: this.el.querySelector('[data-hook="input--url"]'), algorithm: EncodeUri}) },
+            { type: 'escape',       view: new InputView({el: this.el.querySelector('[data-hook="input--escape"]'), algorithm: EncodeEscape }) },
         ];
 
         // Init setup

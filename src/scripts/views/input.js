@@ -57,7 +57,7 @@ var InputView = View.extend({
         this.el.classList.remove('is-focused');
         //recalculate 'plain text', and in turn recalculate all other encodes
         if (this.$textArea.value != this.previousValue) {
-            log('new value:', this.$textArea.value);
+            //log('new value:', this.$textArea.value);
             this.previousValue = this.$textArea.value;
             var decodedValue = this._decodeContent();
             Events.trigger('input:changed', this.type, decodedValue);

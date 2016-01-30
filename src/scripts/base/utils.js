@@ -23,7 +23,7 @@ var Utils = {
 
     // NPM Libraries ----------------
 
-    raf: require('raf'),
+    //raf: require('raf'),
     //ua: require('universal-analytics'),
     //xhr: require('xhr'),
 
