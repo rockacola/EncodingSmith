@@ -9,8 +9,10 @@
 
 html {
     body {
-        font-family: $font-alegreya-sans-stack;
+        font-family: $font-open-sans-stack;
         font-size: 14px;
+        background-color: #fafafa;
+        color: $color-text-base;
     }
 }
 
@@ -22,4 +24,15 @@ html {
  */
 
 .outline {
+    background-color: white;
+    min-height: 100%;
+
+    > .wrapper {
+        padding: 20px 40px;
+    }
+
+    @media #{$medium-up} {
+        width: 600px;
+        margin: 0 auto;
+    }
 }

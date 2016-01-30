@@ -39,6 +39,8 @@ TBA
 * Complete redesign on the front end
 * Modularise the functionality part as vanilla Javascript plugin.
 * Add favicon
+* disabled form-block
+* focused form-block
 
 ### Backburner
 * TBA

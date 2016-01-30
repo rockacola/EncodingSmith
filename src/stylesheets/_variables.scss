@@ -8,7 +8,8 @@
  * --------------------------------------------------
  */
 //$color-steelblue4: #36648B;
-$color-bluegrapes: #3B4990;
+//$color-bluegrapes: #3B4990;
+$color-text-base: #626262;
 
 
 
@@ -16,9 +17,12 @@ $color-bluegrapes: #3B4990;
  * Typography
  * --------------------------------------------------
  */
-@import url("//fonts.googleapis.com/css?family=Alegreya+Sans:100,300,400");
+@import url("//fonts.googleapis.com/css?family=Open+Sans:400,300");
+@import url("//fonts.googleapis.com/css?family=Montserrat:400,700");
 
-$font-alegreya-sans-stack: 'Alegreya Sans', sans-serif;
+$font-open-sans-stack: 'Open Sans', Arial, sans-serif;
+$font-montserrat-stack: 'Montserrat', sans-serif;
+$font-courier-new-stack: 'Courier New', Courier, monospace;
 
 
 
