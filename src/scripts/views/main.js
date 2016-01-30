@@ -9,6 +9,7 @@ var log = require('bows')('Main');
 var App = require('ampersand-app');
 var View = require('ampersand-view');
 var Utils = require('../base/utils');
+var InputView = require('./input');
 
 
 
@@ -19,6 +20,10 @@ var MainView = View.extend({
 
     props: {
         frameCount: 'number',
+
+        plainTextFormBlock: 'object',
+        base64FormBlock: 'object',
+        urlFormBlock: 'object',
     },
 
     derived: {
@@ -34,6 +39,11 @@ var MainView = View.extend({
         log('initialize()');
 
         // Bootstrap
+        this.plainTextFormBlock = new InputView({ el: this.el.querySelector('[data-hook="input--plain-text"]') });
+        this.base64FormBlock = new InputView({ el: this.el.querySelector('[data-hook="input--base64"]') });
+        this.urlFormBlock = new InputView({ el: this.el.querySelector('[data-hook="input--url"]') });
+
+        log('this:', this);
 
         // Init setup
         this._tick();
