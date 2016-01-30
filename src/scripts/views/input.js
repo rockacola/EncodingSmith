@@ -12,7 +12,6 @@ var Events = require('ampersand-events');
 var Utils = require('../base/utils');
 
 
-
 // View
 // --------------------------------------------------
 
@@ -25,11 +24,9 @@ var InputView = View.extend({
         $textArea: 'element',
     },
 
-    derived: {
-    },
+    derived: {},
 
-    bindings: {
-    },
+    bindings: {},
 
     events: {
         'focus textarea': '_textAreaFocusHandler',

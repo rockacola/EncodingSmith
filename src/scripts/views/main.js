@@ -16,7 +16,6 @@ var EncodeUri = require('../base/encodeUri');
 var EncodeBase64 = require('../base/encodeBase64');
 
 
-
 // View
 // --------------------------------------------------
 
@@ -24,30 +23,35 @@ var MainView = View.extend({
 
     props: {
         frameCount: 'number',
-        formBlocks: ['array', true, function() { return []; }],
+        formBlocks: ['array', true, function () {
+            return [];
+        }],
 
         plainTextFormBlock: 'object',
         base64FormBlock: 'object',
         urlFormBlock: 'object',
     },
 
-    derived: {
-    },
+    derived: {},
 
-    bindings: {
-    },
+    bindings: {},
 
-    events: {
-    },
+    events: {},
 
-    initialize: function() {
+    initialize: function () {
         log('initialize()');
 
         // Bootstrap
         this.formBlocks = [
-            { type: 'plain-text',   view: new InputView({ el: this.el.querySelector('[data-hook="input--plain-text"]') })},
-            { type: 'base64',       view: new InputView({ el: this.el.querySelector('[data-hook="input--base64"]'), algorithm: EncodeBase64 })},
-            { type: 'url',          view: new InputView({ el: this.el.querySelector('[data-hook="input--url"]'), algorithm: EncodeUri })},
+            {type: 'plain-text', view: new InputView({el: this.el.querySelector('[data-hook="input--plain-text"]')})},
+            {
+                type: 'base64',
+                view: new InputView({el: this.el.querySelector('[data-hook="input--base64"]'), algorithm: EncodeBase64})
+            },
+            {
+                type: 'url',
+                view: new InputView({el: this.el.querySelector('[data-hook="input--url"]'), algorithm: EncodeUri})
+            },
         ];
 
         // Init setup
@@ -59,17 +63,17 @@ var MainView = View.extend({
 
     // Event Handlers ----------------
 
-    _inputChangedHandler: function(type, decodedValue) {
+    _inputChangedHandler: function (type, decodedValue) {
         log('_inputChangedHandler triggered. type:', type);
-        if(type != 'plain-text') {
+        if (type != 'plain-text') {
             var plainTextFormItem = Utils.find(this.formBlocks, {type: 'plain-text'});
             //log('formItem:', formItem);
             plainTextFormItem.view.SetValue(decodedValue);
         }
 
         //TODO: improve iteration to ignore the 'triggered encode type'.
-        Utils.forEach(this.formBlocks, function(formItem) {
-            if(formItem.type != 'plain-text') {
+        Utils.forEach(this.formBlocks, function (formItem) {
+            if (formItem.type != 'plain-text') {
                 formItem.view.EncodeAndSetValue(decodedValue);
             }
         });
@@ -95,7 +99,6 @@ var MainView = View.extend({
     // Public Methods ----------------
 
 });
-
 
 
 // Exports

@@ -12,27 +12,26 @@ var MainView = require('./views/main');
 //var Utils = require('./base/utils');
 
 
-
 // App Initialization
 // --------------------------------------------------
 
 var TheInstance = window.App = window.App || {
 
-    isDebug: true, // Whether the application is run in debug mode
-    clickOrTouch: 'click',
+        isDebug: true, // Whether the application is run in debug mode
+        clickOrTouch: 'click',
 
-    init: function () {
-        log('TheInstance.init()');
+        init: function () {
+            log('TheInstance.init()');
 
-        //-- Init
-        var baseInstance = this;
-        document.body.setAttribute('data-debug', this.isDebug);
-        baseInstance.clickOrTouch = ('ontouchend' in window) ? 'touchend' : 'click';
+            //-- Init
+            var baseInstance = this;
+            document.body.setAttribute('data-debug', this.isDebug);
+            baseInstance.clickOrTouch = ('ontouchend' in window) ? 'touchend' : 'click';
 
-        //-- View
-        baseInstance.view = new MainView({ el: document.querySelector('[data-hook="outline"]') });
-    }
-};
+            //-- View
+            baseInstance.view = new MainView({el: document.querySelector('[data-hook="outline"]')});
+        }
+    };
 
 App.extend(TheInstance); // use Ampersand-App for better singleton usage.
 App.init();

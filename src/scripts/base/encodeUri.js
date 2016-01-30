@@ -8,20 +8,18 @@
 var log = require('bows')('EncodeURI');
 
 
-
 // App Initialization
 // --------------------------------------------------
 
 var Encode = {
-    encode: function(value) {
+    encode: function (value) {
         return encodeURI(value);
     },
 
-    decode: function(value) {
+    decode: function (value) {
         return decodeURI(value);
     },
 };
-
 
 
 // Exports
