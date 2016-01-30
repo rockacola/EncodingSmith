@@ -19,6 +19,7 @@ var Utils = {
     //random: require('lodash/number/random'),
     //remove: require('lodash/array/remove'),
     debounce: require('lodash/function/debounce'),
+    find: require('lodash/collection/find'),
 
     // NPM Libraries ----------------
 
