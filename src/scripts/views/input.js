@@ -100,7 +100,7 @@ var InputView = View.extend({
     _decodeContent: function () {
         var value = this.$textArea.value;
         if (!this.algorithm) {
-            log('[INFO]', 'This is no algorithm available for this input view, passing back original value');
+            log('[INFO]', 'This is no algorithm available for this input view, passing back original value.', 'type:', this.type);
             return value;
         }
         return this.algorithm.decode(value);

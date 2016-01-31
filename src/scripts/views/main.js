@@ -13,10 +13,6 @@ var Utils = require('../base/utils');
 var InputView = require('./input');
 var VisibilityToggleView = require('./visibility-toggle');
 
-var EncodeUri = require('../base/encodeUri');
-var EncodeBase64 = require('../base/encodeBase64');
-var EncodeEscape = require('../base/encodeEscape');
-var EncodeMd5 = require('../base/encodeMd5');
 
 
 // View
@@ -25,8 +21,9 @@ var EncodeMd5 = require('../base/encodeMd5');
 var MainView = View.extend({
 
     props: {
-        frameCount: 'number',
-        formBlocks: ['array', true, function () { return []; }],
+        //frameCount: 'number',
+        encodings: 'array',
+        formInputViews: ['array', true, function () { return []; }],
 
         visibilityToggles: ['array', true, function () { return []; }],
         $visibilityToggles: 'element',
@@ -50,30 +47,22 @@ var MainView = View.extend({
         this.$visibilityToggles = this.el.querySelector('[data-hook="visibility-toggles"]');
         this.$encodingsContainer = this.el.querySelector('[data-hook="encodings-container"]');
 
-        var encodings = [
-            { type: 'base64',   name: 'Base64 Encode',              allowDecode: true,  algorithm: EncodeBase64 },
-            { type: 'url',      name: 'URL Encode',                 allowDecode: true,  algorithm: EncodeUri },
-            { type: 'escape',   name: 'Special Character Escape',   allowDecode: true,  algorithm: EncodeEscape },
-            { type: 'md5',      name: 'MD5 Checksum',               allowDecode: false, algorithm: EncodeMd5 },
-        ];
-
         // Init setup
-        this.formBlocks = [
-            { type: 'plain-text', view: new InputView({el: this.el.querySelector('[data-hook="input--plain-text"]'), type: 'plain-text', name: 'Plain TextX', allowDecode: true}) },
+        this.formInputViews = [
+            new InputView({el: this.el.querySelector('[data-hook="input--plain-text"]'), type: 'plain-text', name: 'Plain TextX', allowDecode: true}),
         ];
-        //this.formBlocks[0].view.render();
 
-        Utils.forEach(encodings, function(encoding) {
-            var block = { type: encoding.type, view: new InputView({type: encoding.type, name: encoding.name, allowDecode: encoding.allowDecode, algorithm: encoding.algorithm}) };
-            _this.$encodingsContainer.appendChild(block.view.el);
-            _this.formBlocks.push(block);
+        Utils.forEach(this.encodings, function(encoding) {
+            var view = new InputView({type: encoding.type, name: encoding.name, allowDecode: encoding.allowDecode, algorithm: encoding.algorithm});
+            _this.$encodingsContainer.appendChild(view.el);
+            _this.formInputViews.push(view);
         });
 
-        Utils.forEach(this.formBlocks, function(formBlock) {
-            if(formBlock.type != 'plain-text') {
-                var view = new VisibilityToggleView({ type: formBlock.type });
-                _this.$visibilityToggles.appendChild(view.el);
-                _this.visibilityToggles.push(view);
+        Utils.forEach(this.formInputViews, function(formInputView) {
+            if(formInputView.type != 'plain-text') {
+                var vtView = new VisibilityToggleView({ type: formInputView.type });
+                _this.$visibilityToggles.appendChild(vtView.el);
+                _this.visibilityToggles.push(vtView);
             }
         });
 
@@ -87,22 +76,22 @@ var MainView = View.extend({
     _inputContentChangedHandler: function (type, decodedValue) {
         //log('_inputContentChangedHandler triggered. type:', type);
         if (type != 'plain-text') {
-            var plainTextFormItem = Utils.find(this.formBlocks, {type: 'plain-text'});
-            plainTextFormItem.view.SetValue(decodedValue);
+            var plainTextFormItem = Utils.find(this.formInputViews, {type: 'plain-text'});
+            plainTextFormItem.SetValue(decodedValue);
         }
 
         //TODO: improve iteration to ignore the 'triggered encode type'.
-        Utils.forEach(this.formBlocks, function (formItem) {
-            if (formItem.type != 'plain-text') {
-                formItem.view.EncodeAndSetValue(decodedValue);
+        Utils.forEach(this.formInputViews, function (formInputView) {
+            if (formInputView.type != 'plain-text') {
+                formInputView.EncodeAndSetValue(decodedValue);
             }
         });
     },
 
     _inputVisibilityChangedHandler: function(type, isEnabled) {
         //log('_inputVisibilityChangedHandler triggered. type:', type, 'isEnabled:', isEnabled);
-        var formItem = Utils.find(this.formBlocks, {type: type});
-        formItem.view.SetEnabled(isEnabled);
+        var formItem = Utils.find(this.formInputViews, {type: type});
+        formItem.SetEnabled(isEnabled);
     }
 
     // Private Methods ----------------
