@@ -9,7 +9,7 @@
     "ampersand-view": "^9.0.0",
     "bows": "^1.4.8",
     "js-base64": "^2.1.9",
-    "lodash": "^3.10.1",
+    "lodash": "^4.1.0",
     "raf": "^3.1.0"
   },
   "devDependencies": {
