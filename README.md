@@ -28,11 +28,14 @@ TBA
 ---
 
 ## Resources
+* Use Revox as design guide: http://pages.revox.io/dashboard/latest/html/form_elements.html
+
 * HTML Entity Encoder: http://www.w3schools.com/tags/ref_urlencode.asp
 * Upside Down: http://www.web2generators.com/text-related-tools/write-upside-down
 * HTPasswd Generator: http://www.web2generators.com/apache-tools/htpasswd-generator
 
 * Base64
+* Base16 (HEX)
 * URL
 * TEA
 

@@ -1,0 +1,54 @@
+//
+// Modules / Visibility Toggles
+//
+
+.operators {
+    //background-color: rgba(blue, 0.1);
+
+    ul.visibility-toggles {
+        @extend .flat-list;
+
+        li {
+            margin: 10px 2%;
+            width: 46%;
+            button {
+                background: none;
+                background-color: #fafafa;
+                color: lighten($color-text-base, 20%);
+                border: none;
+                border-radius: 3px;
+                width: 100%;
+                padding: 6px 0;
+                transition: background 0.3s;
+                outline: none;
+
+                &:hover,
+                &:active {
+                    background-color: darken(#fafafa, 2%);
+                }
+            }
+
+            &.is-active {
+                button {
+                    background-color: darken(#fafafa, 10%);
+                    color: $color-text-base;
+
+                    &:hover,
+                    &:active {
+                        background-color: darken(#fafafa, 8%);
+                    }
+                }
+            }
+        }
+
+    }
+
+    @media #{$medium-up} {
+        ul.visibility-toggles {
+            li {
+                margin: 10px 1%;
+                width: 23%;
+            }
+        }
+    }
+}
