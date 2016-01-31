@@ -1,12 +1,12 @@
 //
-// Site / Base / Encode Base64
+// Site / Base / Encode MD5
 //
 
 'use strict';
 
 // Dependencies
-var log = require('bows')('Encode Base64');
-var Base64 = require('js-base64').Base64;
+var log = require('bows')('Encode MD5');
+var MD5 = require('md5');
 
 
 // App Initialization
@@ -14,11 +14,11 @@ var Base64 = require('js-base64').Base64;
 
 var Encode = {
     encode: function (value) {
-        return Base64.encode(value);
+        return MD5(value);
     },
 
     decode: function (value) {
-        return Base64.decode(value);
+        return null;
     },
 };
 

@@ -20,19 +20,17 @@ var InputView = View.extend({
     props: {
         algorithm: 'object',
         type: 'string',
+        allowDecode: 'boolean',
         enabled: 'boolean',
         previousValue: ['string', true, ''],
         $textArea: 'element',
-    },
-
-    derived: {
     },
 
     bindings: {
         'enabled': {
             type: 'booleanClass',
             name: 'is-active'
-        }
+        },
     },
 
     events: {
@@ -49,6 +47,10 @@ var InputView = View.extend({
 
         // Init setup
         this.enabled = true;
+        if(!this.allowDecode) {
+            this.el.classList.add('is-disabled');
+            this.$textArea.disabled = true;
+        }
 
         // Bindings
     },

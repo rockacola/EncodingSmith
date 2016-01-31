@@ -5,7 +5,7 @@
 'use strict';
 
 // Dependencies
-var log = require('bows')('EncodeURI');
+var log = require('bows')('Encode URI');
 
 
 // App Initialization

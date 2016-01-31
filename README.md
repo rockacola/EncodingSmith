@@ -33,6 +33,7 @@ TBA
 * HTML Entity Encoder: http://www.w3schools.com/tags/ref_urlencode.asp
 * Upside Down: http://www.web2generators.com/text-related-tools/write-upside-down
 * HTPasswd Generator: http://www.web2generators.com/apache-tools/htpasswd-generator
+* MD5 encode/decode tool: http://md5decrypt.net/en/
 
 * Base64
 * Base16 (HEX)
@@ -40,6 +41,7 @@ TBA
 * TEA
 
 * Various of character encoding/escaping: http://www.the-art-of-web.com/javascript/escape/
+* Various of checksum methods: http://codepen.io/ImagineProgramming/post/checksum-algorithms-in-javascript-checksum-js-engine
 
 
 ## Test Cases
@@ -56,6 +58,7 @@ TBA
 * disabled form-block
 * focused form-block
 * Avoid calculate encoding options that are set to hidden, however make sure that when the option been toggled to enbale, the encoded value is avaiable/current.
+* Error notification when something's wrong
 
 ### Backburner
 * Save user's toggle option

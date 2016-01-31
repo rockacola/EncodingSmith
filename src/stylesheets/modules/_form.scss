@@ -28,6 +28,15 @@
         }
     }
 
+    &.is-disabled {
+        background-color: #f8f8f8;
+
+        textarea.input {
+            cursor: not-allowed;
+            color: rgba($color-text-base, 0.7);
+        }
+    }
+
     label {
         display: block;
         font-family: $font-montserrat-stack;

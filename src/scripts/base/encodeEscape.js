@@ -5,7 +5,7 @@
 'use strict';
 
 // Dependencies
-var log = require('bows')('EncodeEscape');
+var log = require('bows')('Encode Escape');
 
 
 // App Initialization

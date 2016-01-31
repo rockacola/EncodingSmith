@@ -16,6 +16,7 @@ var VisibilityToggleView = require('./visibility-toggle');
 var EncodeUri = require('../base/encodeUri');
 var EncodeBase64 = require('../base/encodeBase64');
 var EncodeEscape = require('../base/encodeEscape');
+var EncodeMd5 = require('../base/encodeMd5');
 
 
 // View
@@ -50,10 +51,11 @@ var MainView = View.extend({
         // Init setup
         //this._tick();
         this.formBlocks = [
-            { type: 'plain-text',   view: new InputView({el: this.el.querySelector('[data-hook="input--plain-text"]')}) },
-            { type: 'base64',       view: new InputView({el: this.el.querySelector('[data-hook="input--base64"]'), algorithm: EncodeBase64}) },
-            { type: 'url',          view: new InputView({el: this.el.querySelector('[data-hook="input--url"]'), algorithm: EncodeUri}) },
-            { type: 'escape',       view: new InputView({el: this.el.querySelector('[data-hook="input--escape"]'), algorithm: EncodeEscape }) },
+            { type: 'plain-text', view: new InputView({el: this.el.querySelector('[data-hook="input--plain-text"]'), allowDecode: true}) },
+            { type: 'base64',     view: new InputView({el: this.el.querySelector('[data-hook="input--base64"]'), allowDecode: true, algorithm: EncodeBase64}) },
+            { type: 'url',        view: new InputView({el: this.el.querySelector('[data-hook="input--url"]'), allowDecode: true, algorithm: EncodeUri}) },
+            { type: 'escape',     view: new InputView({el: this.el.querySelector('[data-hook="input--escape"]'), allowDecode: true, algorithm: EncodeEscape}) },
+            { type: 'md5',        view: new InputView({el: this.el.querySelector('[data-hook="input--md5"]'), allowDecode: false, algorithm: EncodeMd5}) },
         ];
         Utils.forEach(this.formBlocks, function(formBlock) {
             if(formBlock.type != 'plain-text') {
