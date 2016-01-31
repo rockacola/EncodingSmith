@@ -1,6 +1,9 @@
 
 # Encoding Smith
-TBA
+A handy encode/decode tool for multiple formats.
+
+Encoding Smith is a Chrome extension utility handles multiple encoding methods. Encode/decode to multiple formats at same time and does not require Internet connection.
+
 
 ---
 
@@ -34,12 +37,6 @@ TBA
 * Upside Down: http://www.web2generators.com/text-related-tools/write-upside-down
 * HTPasswd Generator: http://www.web2generators.com/apache-tools/htpasswd-generator
 * MD5 encode/decode tool: http://md5decrypt.net/en/
-
-* Base64
-* Base16 (HEX)
-* URL
-* TEA
-
 * Various of character encoding/escaping: http://www.the-art-of-web.com/javascript/escape/
 * Various of checksum methods: http://codepen.io/ImagineProgramming/post/checksum-algorithms-in-javascript-checksum-js-engine
 
@@ -52,11 +49,7 @@ TBA
 ## Progress
 
 ### Todo List
-* Complete redesign on the front end
-* Modularise the functionality part as vanilla Javascript plugin.
 * Add favicon
-* disabled form-block
-* focused form-block
 * Avoid calculate encoding options that are set to hidden, however make sure that when the option been toggled to enbale, the encoded value is avaiable/current.
 * Error notification when something's wrong
 

@@ -49,7 +49,7 @@ var MainView = View.extend({
 
         // Init setup
         this.formInputViews = [
-            new InputView({el: this.el.querySelector('[data-hook="input--plain-text"]'), type: 'plain-text', name: 'Plain TextX', allowDecode: true}),
+            new InputView({el: this.el.querySelector('[data-hook="input--plain-text"]'), type: 'plain-text', name: 'Plain Text', allowDecode: true}),
         ];
 
         Utils.forEach(this.encodings, function(encoding) {

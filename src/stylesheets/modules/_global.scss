@@ -30,6 +30,10 @@ html {
     > .wrapper {
         padding: 20px 40px;
 
+        .intro {
+            margin: 0 1%;
+        }
+
         .encodings-container {
             @include clearfix();
         }
