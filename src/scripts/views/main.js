@@ -30,6 +30,7 @@ var MainView = View.extend({
 
         visibilityToggles: ['array', true, function () { return []; }],
         $visibilityToggles: 'element',
+        $encodingsContainer: 'element',
     },
 
     derived: {
@@ -47,16 +48,27 @@ var MainView = View.extend({
         // Bootstrap
         var _this = this;
         this.$visibilityToggles = this.el.querySelector('[data-hook="visibility-toggles"]');
+        this.$encodingsContainer = this.el.querySelector('[data-hook="encodings-container"]');
+
+        var encodings = [
+            { type: 'base64',   name: 'Base64 Encode',              allowDecode: true,  algorithm: EncodeBase64 },
+            { type: 'url',      name: 'URL Encode',                 allowDecode: true,  algorithm: EncodeUri },
+            { type: 'escape',   name: 'Special Character Escape',   allowDecode: true,  algorithm: EncodeEscape },
+            { type: 'md5',      name: 'MD5 Checksum',               allowDecode: false, algorithm: EncodeMd5 },
+        ];
 
         // Init setup
-        //this._tick();
         this.formBlocks = [
-            { type: 'plain-text', view: new InputView({el: this.el.querySelector('[data-hook="input--plain-text"]'), allowDecode: true}) },
-            { type: 'base64',     view: new InputView({el: this.el.querySelector('[data-hook="input--base64"]'), allowDecode: true, algorithm: EncodeBase64}) },
-            { type: 'url',        view: new InputView({el: this.el.querySelector('[data-hook="input--url"]'), allowDecode: true, algorithm: EncodeUri}) },
-            { type: 'escape',     view: new InputView({el: this.el.querySelector('[data-hook="input--escape"]'), allowDecode: true, algorithm: EncodeEscape}) },
-            { type: 'md5',        view: new InputView({el: this.el.querySelector('[data-hook="input--md5"]'), allowDecode: false, algorithm: EncodeMd5}) },
+            { type: 'plain-text', view: new InputView({el: this.el.querySelector('[data-hook="input--plain-text"]'), type: 'plain-text', name: 'Plain TextX', allowDecode: true}) },
         ];
+        //this.formBlocks[0].view.render();
+
+        Utils.forEach(encodings, function(encoding) {
+            var block = { type: encoding.type, view: new InputView({type: encoding.type, name: encoding.name, allowDecode: encoding.allowDecode, algorithm: encoding.algorithm}) };
+            _this.$encodingsContainer.appendChild(block.view.el);
+            _this.formBlocks.push(block);
+        });
+
         Utils.forEach(this.formBlocks, function(formBlock) {
             if(formBlock.type != 'plain-text') {
                 var view = new VisibilityToggleView({ type: formBlock.type });
@@ -73,7 +85,7 @@ var MainView = View.extend({
     // Event Handlers ----------------
 
     _inputContentChangedHandler: function (type, decodedValue) {
-        log('_inputContentChangedHandler triggered. type:', type);
+        //log('_inputContentChangedHandler triggered. type:', type);
         if (type != 'plain-text') {
             var plainTextFormItem = Utils.find(this.formBlocks, {type: 'plain-text'});
             plainTextFormItem.view.SetValue(decodedValue);
@@ -88,27 +100,12 @@ var MainView = View.extend({
     },
 
     _inputVisibilityChangedHandler: function(type, isEnabled) {
-        log('_inputVisibilityChangedHandler triggered. type:', type, 'isEnabled:', isEnabled);
+        //log('_inputVisibilityChangedHandler triggered. type:', type, 'isEnabled:', isEnabled);
         var formItem = Utils.find(this.formBlocks, {type: type});
         formItem.view.SetEnabled(isEnabled);
     }
 
     // Private Methods ----------------
-
-    //_tick: function() {
-    //    //log('starting _tick');
-    //    var _this = this;
-    //    var increment = function() {
-    //        _this._tickAction();
-    //        _this.frameCount++;
-    //        Utils.raf(increment);
-    //    };
-    //    increment();
-    //},
-    //
-    //_tickAction: function() {
-    //    //log('tick: ', this.frameCount);
-    //},
 
     // Public Methods ----------------
 

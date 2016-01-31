@@ -17,13 +17,25 @@ var Utils = require('../base/utils');
 
 var InputView = View.extend({
 
+    template: '<div class="form-block form-block--encode">' +
+                '<label>[Label]</label>' +
+                '<textarea class="input"></textarea>' +
+              '</div>',
+
+    render: function() {
+        this.renderWithTemplate(this);
+        return this;
+    },
+
     props: {
         algorithm: 'object',
         type: 'string',
+        name: 'string',
         allowDecode: 'boolean',
         enabled: 'boolean',
         previousValue: ['string', true, ''],
         $textArea: 'element',
+        $label: 'element',
     },
 
     bindings: {
@@ -39,13 +51,22 @@ var InputView = View.extend({
     },
 
     initialize: function () {
-        //log('initialize()');
+        log('initialize(), type:', this.type);
 
         // Bootstrap
-        this.$textArea = this.el.querySelector('textarea');
-        this.type = this.el.getAttribute('data-encode-type');
+        if(!this.el) { // Check if parent supplies el property
+            this.render();
+        }
 
         // Init setup
+        this.$textArea = this.el.querySelector('textarea');
+        this.$label = this.el.querySelector('label');
+
+        this.el.classList.add('form-block--' + this.type);
+        this.el.setAttribute('data-hook', 'input--' + this.type);
+        this.el.setAttribute('data-encode-type', this.type);
+        this.$label.innerHTML = this.name; //TODO
+
         this.enabled = true;
         if(!this.allowDecode) {
             this.el.classList.add('is-disabled');
@@ -58,7 +79,7 @@ var InputView = View.extend({
     // Event Handlers ----------------
 
     _textAreaFocusHandler: function (e) {
-        //log('_textAreaClickHandler triggered');
+        //log('_textAreaFocusHandler triggered');
         this.el.classList.add('is-focused');
     },
 

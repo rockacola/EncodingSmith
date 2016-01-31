@@ -29,7 +29,10 @@ html {
 
     > .wrapper {
         padding: 20px 40px;
-        @include clearfix();
+
+        .encodings-container {
+            @include clearfix();
+        }
     }
 
     @media #{$medium-up} {

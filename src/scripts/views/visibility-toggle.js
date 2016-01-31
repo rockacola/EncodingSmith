@@ -17,17 +17,11 @@ var Events = require('ampersand-events');
 
 var VisibilityToggleView = View.extend({
 
-    autoRender: true,
-
     template: '<li><button></button></li>',
 
     render: function() {
         // Bootstrap
         this.renderWithTemplate(this);
-        // Init setup
-        this.$button = this.el.querySelector('button');
-        this.$button.innerHTML = this.type;
-        this.$button.setAttribute('data-type', this.type);
 
         return this;
     },
@@ -53,11 +47,15 @@ var VisibilityToggleView = View.extend({
     },
 
     initialize: function () {
-        log('initialize()');
+        //log('initialize()');
 
         // Bootstrap
+        this.render();
 
         // Init setup
+        this.$button = this.el.querySelector('button');
+        this.$button.innerHTML = this.type;
+        this.$button.setAttribute('data-type', this.type);
         this.enabled = true;
 
         // Bindings
@@ -66,7 +64,7 @@ var VisibilityToggleView = View.extend({
     // Event Handlers ----------------
 
     _buttonClickHandler: function(e) {
-        log('_buttonClickHandler triggered');
+        //log('_buttonClickHandler triggered');
         this.enabled = !this.enabled;
         Events.trigger('input:visibility-changed', this.type, this.enabled);
     },
