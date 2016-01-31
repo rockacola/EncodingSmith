@@ -55,9 +55,10 @@ TBA
 * Add favicon
 * disabled form-block
 * focused form-block
+* Avoid calculate encoding options that are set to hidden, however make sure that when the option been toggled to enbale, the encoded value is avaiable/current.
 
 ### Backburner
-* TBA
+* Save user's toggle option
 
 ### Roadmaps
 * TBA

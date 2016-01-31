@@ -8,7 +8,7 @@
 var log = require('bows')('Visibility Toggle');
 //var App = require('ampersand-app');
 var View = require('ampersand-view');
-//var Events = require('ampersand-events');
+var Events = require('ampersand-events');
 //var Utils = require('../base/utils');
 
 
@@ -68,6 +68,7 @@ var VisibilityToggleView = View.extend({
     _buttonClickHandler: function(e) {
         log('_buttonClickHandler triggered');
         this.enabled = !this.enabled;
+        Events.trigger('input:visibility-changed', this.type, this.enabled);
     },
 
     // Private Methods ----------------

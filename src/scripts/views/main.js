@@ -31,11 +31,14 @@ var MainView = View.extend({
         $visibilityToggles: 'element',
     },
 
-    derived: {},
+    derived: {
+    },
 
-    bindings: {},
+    bindings: {
+    },
 
-    events: {},
+    events: {
+    },
 
     initialize: function () {
         log('initialize()');
@@ -53,25 +56,24 @@ var MainView = View.extend({
             { type: 'escape',       view: new InputView({el: this.el.querySelector('[data-hook="input--escape"]'), algorithm: EncodeEscape }) },
         ];
         Utils.forEach(this.formBlocks, function(formBlock) {
-            //TODO: avoid adding plain-text
-            var view = new VisibilityToggleView({ type: formBlock.type });
-            //log('view:', view);
-            log('view.el:', view.el);
-            _this.$visibilityToggles.appendChild(view.el);
-            _this.visibilityToggles.push(view);
+            if(formBlock.type != 'plain-text') {
+                var view = new VisibilityToggleView({ type: formBlock.type });
+                _this.$visibilityToggles.appendChild(view.el);
+                _this.visibilityToggles.push(view);
+            }
         });
 
         // Bindings
-        Events.on('input:changed', this._inputChangedHandler.bind(this));
+        Events.on('input:content-changed', this._inputContentChangedHandler.bind(this));
+        Events.on('input:visibility-changed', this._inputVisibilityChangedHandler.bind(this));
     },
 
     // Event Handlers ----------------
 
-    _inputChangedHandler: function (type, decodedValue) {
-        log('_inputChangedHandler triggered. type:', type);
+    _inputContentChangedHandler: function (type, decodedValue) {
+        log('_inputContentChangedHandler triggered. type:', type);
         if (type != 'plain-text') {
             var plainTextFormItem = Utils.find(this.formBlocks, {type: 'plain-text'});
-            //log('formItem:', formItem);
             plainTextFormItem.view.SetValue(decodedValue);
         }
 
@@ -82,6 +84,12 @@ var MainView = View.extend({
             }
         });
     },
+
+    _inputVisibilityChangedHandler: function(type, isEnabled) {
+        log('_inputVisibilityChangedHandler triggered. type:', type, 'isEnabled:', isEnabled);
+        var formItem = Utils.find(this.formBlocks, {type: type});
+        formItem.view.SetEnabled(isEnabled);
+    }
 
     // Private Methods ----------------
 

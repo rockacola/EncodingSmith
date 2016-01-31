@@ -20,13 +20,20 @@ var InputView = View.extend({
     props: {
         algorithm: 'object',
         type: 'string',
+        enabled: 'boolean',
         previousValue: ['string', true, ''],
         $textArea: 'element',
     },
 
-    derived: {},
+    derived: {
+    },
 
-    bindings: {},
+    bindings: {
+        'enabled': {
+            type: 'booleanClass',
+            name: 'is-active'
+        }
+    },
 
     events: {
         'focus textarea': '_textAreaFocusHandler',
@@ -41,6 +48,7 @@ var InputView = View.extend({
         this.type = this.el.getAttribute('data-encode-type');
 
         // Init setup
+        this.enabled = true;
 
         // Bindings
     },
@@ -60,7 +68,7 @@ var InputView = View.extend({
             //log('new value:', this.$textArea.value);
             this.previousValue = this.$textArea.value;
             var decodedValue = this._decodeContent();
-            Events.trigger('input:changed', this.type, decodedValue);
+            Events.trigger('input:content-changed', this.type, decodedValue);
         }
     },
 
@@ -86,6 +94,9 @@ var InputView = View.extend({
         this.$textArea.value = this.algorithm.encode(rawValue);
     },
 
+    SetEnabled: function(enabled) {
+        this.enabled = enabled;
+    }
 });
 
 
