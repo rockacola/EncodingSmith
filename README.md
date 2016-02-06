@@ -48,6 +48,11 @@ Encoding Smith is a Chrome extension utility handles multiple encoding methods. 
 
 ## Progress
 
+### New incoming supports
+* Upside Down text
+* Zalgo (http://stackoverflow.com/questions/6579844/how-does-zalgo-text-work)
+* TEA (different versions)
+
 ### Todo List
 * Add favicon
 * Avoid calculate encoding options that are set to hidden, however make sure that when the option been toggled to enbale, the encoded value is avaiable/current.
